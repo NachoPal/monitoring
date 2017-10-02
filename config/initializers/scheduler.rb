@@ -4,8 +4,7 @@ require 'rake'
 Rails.application.load_tasks
 
 start = Rufus::Scheduler.singleton
-start_trade = Rufus::Scheduler.singleton
-trade = Rufus::Scheduler.singleton
+start_monitor = Rufus::Scheduler.singleton
 
 unless defined?(Rails::Console)
 
@@ -24,7 +23,7 @@ unless defined?(Rails::Console)
     Rake::Task['populate:wallets'].invoke(1)
   end
 
-  start_trade.in '60s' do
+  start_monitor.in '60s' do
     trade.every "#{PERIOD_SEG}s" do
       Rake::Task['monitor:markets'].reenable
       Rake::Task['monitor:markets'].invoke

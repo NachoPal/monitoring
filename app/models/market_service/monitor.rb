@@ -8,7 +8,7 @@ module MarketService
 
       markets = Bittrex.client.get('public/getmarketsummaries')
 
-      result[:markets] = exclude(markets)
+      valid_markets
 
       result[:percentile_volume] = calculate_volume_percentile(result[:markets])
 
