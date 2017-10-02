@@ -5,6 +5,7 @@ Rails.application.load_tasks
 
 start = Rufus::Scheduler.singleton
 start_monitor = Rufus::Scheduler.singleton
+monitor = Rufus::Scheduler.singleton
 
 unless defined?(Rails::Console)
 
@@ -24,7 +25,7 @@ unless defined?(Rails::Console)
   end
 
   start_monitor.in '60s' do
-    trade.every "#{PERIOD_SEG}s" do
+    monitor.every "#{PERIOD_SEG}s" do
       Rake::Task['monitor:markets'].reenable
       Rake::Task['monitor:markets'].invoke
     end
