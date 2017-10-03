@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002131036) do
+ActiveRecord::Schema.define(version: 20171003180925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,11 @@ ActiveRecord::Schema.define(version: 20171002131036) do
     t.integer  "percentile_volume"
     t.integer  "get_rid_off_after_min"
     t.integer  "quarantine_to_buy_min"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "total_monitor_period_min"
+    t.integer  "period_seg"
+    t.integer  "length_array_prices"
     t.index ["account_id"], name: "index_tests_on_account_id", using: :btree
   end
 
