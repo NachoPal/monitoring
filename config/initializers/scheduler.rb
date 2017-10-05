@@ -15,13 +15,15 @@ unless defined?(Rails::Console)
     Orderr.destroy_all
     Wallet.destroy_all
     Transactionn.destroy_all
+    Test.destroy_all
+    Account.destroy_all
 
     Rake::Task['destroy:markets'].execute
     Rake::Task['populate:markets'].execute
 
     #TODO: Select proper a
     # ccount
-    Rake::Task['populate:wallets'].invoke(1)
+    #Rake::Task['populate:wallets'].invoke(1)
   end
 
   start_monitor.in '60s' do
